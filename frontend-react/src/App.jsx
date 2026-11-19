@@ -6,7 +6,7 @@ function App() {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">
+                    <Link className="navbar-brand fw-bold" to="/">
                         MobileStore
                     </Link>
 
@@ -28,10 +28,18 @@ function App() {
 
             <Outlet />
 
-            <footer className="bg-dark text-white text-center p-3 mt-5">
-                <p className="mb-0">
-                    © 2026 MobileStore - Tienda de móviles
-                </p>
+            <footer className="bg-dark text-white text-center py-4">
+                <div className="container">
+                    <h5 className="fw-bold">MobileStore</h5>
+
+                    <p className="mb-0 text-secondary">
+                        Tu tienda de confianza para encontrar los mejores móviles.
+                    </p>
+
+                    <small className="text-secondary">
+                        © 2026 MobileStore. Todos los derechos reservados.
+                    </small>
+                </div>
             </footer>
         </>
     );

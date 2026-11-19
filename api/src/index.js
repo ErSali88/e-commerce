@@ -8,10 +8,15 @@ const categoryRoutes = require('./routes/categoryRoutes');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 
 app.get('/', (req, res) => {
     res.send('API Ecommerce en marxa 🚀');
