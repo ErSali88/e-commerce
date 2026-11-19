@@ -432,6 +432,6 @@ Las contraseñas se almacenan mediante bcrypt y los Refresh Tokens se guardan me
 
 **Autor:** Salis Alvarez
 
-**Repositorio GitHub:** [Añadir aquí el enlace al repositorio]
+**Repositorio GitHub:** https://github.com/ErSali88/e-commerce/
 
 **Proyecto:** E-commerce Full Stack - Tienda online de teléfonos móviles.
