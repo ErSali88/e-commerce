@@ -1,7 +1,7 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { apiRequest } from '../services/api';
+import './Auth.css';                                    // CAMBIO
 
 function Register() {
     const navigate = useNavigate();
@@ -45,90 +45,97 @@ function Register() {
     };
 
     return (
-        <main className="container mt-5 mb-5">
-            <div className="row justify-content-center">
-                <div className="col-md-6 col-lg-5">
-                    <div className="card shadow p-4">
-                        <h2 className="text-center mb-4">
-                            Crear una cuenta
-                        </h2>
+        <main className="auth-page">
+            <div className="auth-card">
 
-                        <form onSubmit={handleRegister}>
-                            <div className="mb-3">
-                                <label className="form-label">
-                                    Nombre
-                                </label>
+                <span className="auth-tag">ÚNETE A MOBILESTORE</span>
 
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    value={nombre}
-                                    onChange={(e) => setNombre(e.target.value)}
-                                    placeholder="Introduce tu nombre"
-                                    required
-                                />
-                            </div>
+                <h1 className="auth-title">Crear una cuenta</h1>
 
-                            <div className="mb-3">
-                                <label className="form-label">
-                                    Correo electrónico
-                                </label>
+                <p className="auth-subtitle">
+                    Regístrate para descubrir nuestra tienda.
+                </p>
 
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Introduce tu email"
-                                    required
-                                />
-                            </div>
+                <form onSubmit={handleRegister}>
 
-                            <div className="mb-3">
-                                <label className="form-label">
-                                    Contraseña
-                                </label>
+                    <div className="auth-field">
+                        <label className="auth-label">
+                            Nombre
+                        </label>
 
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Mínimo 12 caracteres"
-                                    minLength={12}
-                                    required
-                                />
-                            </div>
-
-                            {error && (
-                                <div className="alert alert-danger">
-                                    {error}
-                                </div>
-                            )}
-
-                            {mensaje && (
-                                <div className="alert alert-success">
-                                    {mensaje}
-                                </div>
-                            )}
-
-                            <button
-                                type="submit"
-                                className="btn btn-primary w-100"
-                                disabled={cargando}
-                            >
-                                {cargando ? 'Registrando...' : 'Registrarse'}
-                            </button>
-                        </form>
-
-                        <p className="text-center mt-3 mb-0">
-                            ¿Ya tienes una cuenta?{' '}
-                            <Link to="/login">
-                                Inicia sesión
-                            </Link>
-                        </p>
+                        <input
+                            type="text"
+                            className="auth-input"
+                            value={nombre}
+                            onChange={(e) => setNombre(e.target.value)}
+                            placeholder="Introduce tu nombre"
+                            required
+                        />
                     </div>
-                </div>
+
+                    <div className="auth-field">
+                        <label className="auth-label">
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            className="auth-input"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Introduce tu email"
+                            required
+                        />
+                    </div>
+
+                    <div className="auth-field">
+                        <label className="auth-label">
+                            Contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            className="auth-input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Introduce tu contraseña"
+                            minLength={12}
+                            required
+                        />
+
+                        <span className="auth-hint">
+                            Mínimo 12 caracteres
+                        </span>
+                    </div>
+
+                    {error && (
+                        <div className="auth-alert auth-alert-error">
+                            {error}
+                        </div>
+                    )}
+
+                    {mensaje && (
+                        <div className="auth-alert auth-alert-success">
+                            {mensaje}
+                        </div>
+                    )}
+
+                    <button
+                        type="submit"
+                        className="auth-button"
+                        disabled={cargando}
+                    >
+                        {cargando ? 'Registrando...' : 'Registrarse'}
+                    </button>
+                </form>
+
+                <p className="auth-footer">
+                    ¿Ya tienes una cuenta?{' '}
+                    <Link to="/login">
+                        Inicia sesión
+                    </Link>
+                </p>
+
             </div>
         </main>
     );

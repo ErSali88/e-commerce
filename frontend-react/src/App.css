@@ -1,184 +1,248 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* =====================================
+   ESTRUCTURA GENERAL
+===================================== */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
+.app-layout {
+    min-height: 100vh;
     display: flex;
-    padding: 6px 12px;
+    flex-direction: column;
+}
+
+.app-content {
+    flex: 1;   /* empuja el footer al final aunque la página sea corta */
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(16, 19, 25, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.site-header-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 70px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* LOGO */
+
+.site-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: white;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+}
+
+.site-brand:hover {
+    color: white;
+}
+
+.site-brand-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #3168ed;
+    border-radius: 9px;
+    color: white;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+
+/* NAVEGACIÓN */
+
+.site-nav {
+    display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.site-nav-link {
+    padding: 9px 16px;
+
+    border-radius: 7px;
+    color: #b7bdc8;
+    font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+    transition: 0.25s;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.site-nav-link:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: white;
 }
 
-.ticks {
-  position: relative;
-  width: 100%;
+.site-nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.site-nav-button {
+    margin-left: 6px;
+    padding: 10px 18px;
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+    background: #3168ed;
+    border-radius: 7px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.site-nav-button:hover {
+    background: #4b7df5;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.site-nav-button.active {
+    background: #1e4fc2;
+    color: white;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.site-footer {
+    background: #101319;
+    color: white;
+}
+
+.site-footer-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 60px 30px 45px;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+}
+
+.site-footer-brand p {
+    max-width: 340px;
+    margin: 18px 0 0;
+
+    color: #9ba3b1;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.site-footer-column h4 {
+    margin: 0 0 20px;
+
+    color: #8baeff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.site-footer-column ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.site-footer-column a {
+    color: #b7bdc8;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.site-footer-column a:hover {
+    color: white;
+}
+
+.site-footer-bottom {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 22px 30px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #737b89;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* =====================================
+   TABLETS Y MÓVILES
+===================================== */
+
+@media (max-width: 768px) {
+
+    .site-header-container {
+        padding: 0 15px;
+    }
+
+    .site-brand {
+        font-size: 17px;
+    }
+
+    .site-nav {
+        gap: 2px;
+    }
+
+    .site-nav-link {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .site-nav-button {
+        margin-left: 2px;
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .site-footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 45px 25px 35px;
+    }
+
+    .site-footer-bottom {
+        padding: 20px 25px;
+    }
+}
+
+/* En móviles muy estrechos se oculta el texto del logo y queda solo "MS" */
+@media (max-width: 480px) {
+
+    .site-brand-text {
+        display: none;
+    }
 }

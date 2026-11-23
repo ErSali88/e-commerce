@@ -1,47 +1,97 @@
-
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import './App.css';                                     // CAMBIO
 
 function App() {
     return (
-        <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container">
-                    <Link className="navbar-brand fw-bold" to="/">
-                        MobileStore
+        <div className="app-layout">
+
+            {/* HEADER */}
+
+            <header className="site-header">
+                <div className="site-header-container">
+
+                    <Link className="site-brand" to="/">
+                        <span className="site-brand-icon">MS</span>
+                        <span className="site-brand-text">MobileStore</span>
                     </Link>
 
-                    <div className="navbar-nav ms-auto">
-                        <Link className="nav-link" to="/">
+                    <nav className="site-nav">
+                        <NavLink
+                            to="/"
+                            end
+                            className="site-nav-link"
+                        >
                             Inicio
-                        </Link>
+                        </NavLink>
 
-                        <Link className="nav-link" to="/login">
+                        <NavLink
+                            to="/login"
+                            className="site-nav-link"
+                        >
                             Iniciar sesión
-                        </Link>
+                        </NavLink>
 
-                        <Link className="nav-link" to="/register">
+                        <NavLink
+                            to="/register"
+                            className="site-nav-button"
+                        >
                             Registrarse
+                        </NavLink>
+                    </nav>
+
+                </div>
+            </header>
+
+
+            {/* CONTENIDO DE CADA PÁGINA */}
+
+            <div className="app-content">
+                <Outlet />
+            </div>
+
+
+            {/* FOOTER */}
+
+            <footer className="site-footer">
+
+                <div className="site-footer-container">
+
+                    <div className="site-footer-brand">
+                        <Link className="site-brand" to="/">
+                            <span className="site-brand-icon">MS</span>
+                            <span>MobileStore</span>
                         </Link>
+
+                        <p>
+                            Tu tienda de confianza para encontrar
+                            los mejores móviles.
+                        </p>
                     </div>
+
+                    <div className="site-footer-column">
+                        <h4>Navegación</h4>
+                        <ul>
+                            <li><Link to="/">Inicio</Link></li>
+                        </ul>
+                    </div>
+
+                    <div className="site-footer-column">
+                        <h4>Tu cuenta</h4>
+                        <ul>
+                            <li><Link to="/login">Iniciar sesión</Link></li>
+                            <li><Link to="/register">Registrarse</Link></li>
+                        </ul>
+                    </div>
+
                 </div>
-            </nav>
 
-            <Outlet />
-
-            <footer className="bg-dark text-white text-center py-4">
-                <div className="container">
-                    <h5 className="fw-bold">MobileStore</h5>
-
-                    <p className="mb-0 text-secondary">
-                        Tu tienda de confianza para encontrar los mejores móviles.
-                    </p>
-
-                    <small className="text-secondary">
-                        © 2026 MobileStore. Todos los derechos reservados.
-                    </small>
+                <div className="site-footer-bottom">
+                    © {new Date().getFullYear()} MobileStore. Todos los derechos reservados.
                 </div>
+
             </footer>
-        </>
+
+        </div>
     );
 }
 

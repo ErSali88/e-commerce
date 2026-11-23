@@ -1,0 +1,193 @@
+/* =====================================
+   PÁGINAS DE LOGIN Y REGISTRO
+===================================== */
+
+.auth-page {
+    min-height: 80vh;
+    padding: 60px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #f6f7f9;
+    color: #17191d;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 35px;
+
+    background: white;
+    border: 1px solid #e9ebef;
+    border-radius: 13px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+}
+
+
+/* CABECERA */
+
+.auth-tag {
+    display: inline-block;
+    margin-bottom: 15px;
+
+    color: #3168ed;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.auth-title {
+    margin: 0 0 8px;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.auth-subtitle {
+    margin: 0 0 30px;
+    color: #737b89;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* FORMULARIO */
+
+.auth-field {
+    margin-bottom: 20px;
+}
+
+.auth-label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #17191d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 13px 15px;
+
+    background: #f8f9fb;
+    border: 1px solid #dde1e8;
+    border-radius: 7px;
+    color: #17191d;
+    font-size: 15px;
+
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.auth-input::placeholder {
+    color: #9ba3b1;
+}
+
+.auth-input:focus {
+    outline: none;
+    background: white;
+    border-color: #3168ed;
+    box-shadow: 0 0 0 3px rgba(49, 104, 237, 0.15);
+}
+
+.auth-hint {
+    display: block;
+    margin-top: 6px;
+    color: #89919e;
+    font-size: 12px;
+}
+
+
+/* BOTÓN */
+
+.auth-button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 14px 20px;
+
+    background: #3168ed;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-button:hover:not(:disabled) {
+    background: #1e4fc2;
+    transform: translateY(-2px);
+}
+
+.auth-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* MENSAJES */
+
+.auth-alert {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    border-radius: 7px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.auth-alert-error {
+    background: #fdecec;
+    border: 1px solid #f5c2c2;
+    color: #b42323;
+}
+
+.auth-alert-success {
+    background: #e8f7ee;
+    border: 1px solid #b9e4c9;
+    color: #1d7a45;
+}
+
+
+/* ENLACE INFERIOR */
+
+.auth-footer {
+    margin: 25px 0 0;
+    text-align: center;
+    color: #737b89;
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: #3168ed;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================
+   MÓVILES
+===================================== */
+
+@media (max-width: 768px) {
+
+    .auth-page {
+        padding: 40px 15px;
+        align-items: flex-start;
+    }
+
+    .auth-card {
+        padding: 30px 22px;
+    }
+
+    .auth-title {
+        font-size: 26px;
+    }
+}

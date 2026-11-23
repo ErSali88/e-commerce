@@ -1,125 +1,232 @@
-
 import { Link } from 'react-router-dom';
+import './Home.css';
 
 function Home() {
+
+    // Productos destacados de nuestra tienda
     const productos = [
         {
+            id: 1,
             nombre: 'iPhone 16',
-            descripcion: 'Apple · 128 GB',
+            marca: 'Apple',
+            descripcion: '128 GB · Negro',
             precio: '899 €',
-            imagen: 'https://placehold.co/600x400?text=iPhone+16'
+            imagen: '/images/iphone-16.png',
+            etiqueta: 'Destacado'
         },
         {
+            id: 2,
             nombre: 'Samsung Galaxy S25',
-            descripcion: 'Samsung · 256 GB',
+            marca: 'Samsung',
+            descripcion: '256 GB · Gris oscuro',
             precio: '849 €',
-            imagen: 'https://placehold.co/600x400?text=Galaxy+S25'
+            imagen: '/images/samsung-s25.png',
+            etiqueta: 'Novedad'
         },
         {
+            id: 3,
             nombre: 'Xiaomi 15',
-            descripcion: 'Xiaomi · 256 GB',
-            precio: '699 €',
-            imagen: 'https://placehold.co/600x400?text=Xiaomi+15'
+            marca: 'Xiaomi',
+            descripcion: '256 GB · Gris oscuro',
+            precio: '800 €',
+            imagen: '/images/xiaomi-15.png',
+            etiqueta: 'Novedad'
         }
     ];
 
     return (
-        <>
-            <section className="bg-dark text-white py-5">
-                <div className="container py-4">
-                    <div className="row align-items-center">
-                        <div className="col-md-7">
-                            <span className="badge bg-primary mb-3">
-                                Tecnología a tu alcance
-                            </span>
+        <div className="home-page">
 
-                            <h1 className="display-4 fw-bold">
-                                Encuentra tu próximo móvil
-                            </h1>
+            {/* BANNER PRINCIPAL */}
 
-                            <p className="lead text-light">
-                                Descubre las últimas novedades en
-                                smartphones al mejor precio.
-                            </p>
+            <section className="hero-section">
+                <div className="hero-container">
 
-                            <a href="#productos" className="btn btn-primary btn-lg mt-2">
-                                Ver productos
-                            </a>
+                    <div className="hero-content">
+
+                        <span className="hero-tag">
+                            MOBILESTORE · TECNOLOGÍA
+                        </span>
+
+                        <h1>
+                            La tecnología que
+                            <span> te mueve.</span>
+                        </h1>
+
+                        <p>
+                            Descubre los últimos smartphones de las
+                            mejores marcas. Encuentra el dispositivo
+                            perfecto para ti.
+                        </p>
+
+                        <a href="#productos" className="hero-button">
+                            Descubrir productos
+                            <span>→</span>
+                        </a>
+
+                        <div className="hero-features">
+                            <div>
+                                <strong>Últimos</strong>
+                                <span>lanzamientos</span>
+                            </div>
+
+                            <div>
+                                <strong>Grandes</strong>
+                                <span>marcas</span>
+                            </div>
+
+                            <div>
+                                <strong>Calidad</strong>
+                                <span>garantizada</span>
+                            </div>
                         </div>
 
-                        <div className="col-md-5 text-center mt-4 mt-md-0">
-                            <img
-                                src="https://placehold.co/500x350?text=MobileStore"
-                                alt="Móviles destacados"
-                                className="img-fluid rounded"
-                            />
+                    </div>
+
+                    <div className="hero-image-container">
+                        <img
+                            src="/images/iphone-16.png"
+                            alt="iPhone 16 visto desde delante y detrás"
+                            className="hero-image"
+                        />
+
+                        <div className="hero-image-label">
+                            <span>APPLE</span>
+                            <strong>iPhone 16</strong>
                         </div>
                     </div>
+
                 </div>
             </section>
 
-            <main className="container py-5" id="productos">
-                <div className="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h2 className="fw-bold mb-1">
-                            Productos destacados
-                        </h2>
 
-                        <p className="text-secondary mb-0">
-                            Una selección de nuestros móviles
+            {/* PRODUCTOS DESTACADOS */}
+
+            <main className="products-section" id="productos">
+
+                <div className="products-heading">
+
+                    <div>
+                        <span className="section-label">
+                            NUESTRA SELECCIÓN
+                        </span>
+
+                        <h2>Productos destacados</h2>
+
+                        <p>
+                            Descubre algunos de nuestros smartphones.
                         </p>
                     </div>
+
+                    <span className="products-count">
+                        {productos.length} productos
+                    </span>
+
                 </div>
 
-                <div className="row">
-                    {productos.map((producto, index) => (
-                        <div className="col-md-4 mb-4" key={index}>
-                            <div className="card h-100 border-0 shadow-sm">
+
+                <div className="products-grid">
+
+                    {productos.map((producto) => (
+
+                        <article
+                            className="product-card"
+                            key={producto.id}
+                        >
+
+                            <div className="product-image-container">
+
+                                <span className="product-tag">
+                                    {producto.etiqueta}
+                                </span>
+
                                 <img
                                     src={producto.imagen}
-                                    className="card-img-top p-3"
                                     alt={producto.nombre}
+                                    className="product-image"
                                 />
 
-                                <div className="card-body">
-                                    <h5 className="card-title fw-bold">
-                                        {producto.nombre}
-                                    </h5>
-
-                                    <p className="text-secondary">
-                                        {producto.descripcion}
-                                    </p>
-
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <h5 className="text-primary fw-bold mb-0">
-                                            {producto.precio}
-                                        </h5>
-
-                                        <button className="btn btn-outline-primary">
-                                            Ver producto
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+
+
+                            <div className="product-information">
+
+                                <span className="product-brand">
+                                    {producto.marca}
+                                </span>
+
+                                <h3>{producto.nombre}</h3>
+
+                                <p className="product-description">
+                                    {producto.descripcion}
+                                </p>
+
+                                <div className="product-bottom">
+
+                                    <div>
+                                        <span className="price-label">
+                                            Precio
+                                        </span>
+
+                                        <strong className="product-price">
+                                            {producto.precio}
+                                        </strong>
+                                    </div>
+
+                                    <Link
+                                        to="/login"
+                                        className="product-button"
+                                    >
+                                        Ver más →
+                                    </Link>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
                     ))}
+
                 </div>
 
-                <section className="bg-light rounded p-4 text-center mt-4">
-                    <h3 className="fw-bold">
-                        ¿Todavía no tienes una cuenta?
-                    </h3>
+            </main>
 
-                    <p className="text-secondary">
-                        Regístrate para empezar a disfrutar de nuestra tienda.
+
+            {/* BANNER DE REGISTRO */}
+
+            <section className="register-banner">
+
+                <div className="register-banner-content">
+
+                    <span>ÚNETE A MOBILESTORE</span>
+
+                    <h2>
+                        Tu próxima experiencia
+                        <br />
+                        tecnológica empieza aquí.
+                    </h2>
+
+                    <p>
+                        Crea tu cuenta y descubre nuestra tienda.
                     </p>
 
-                    <Link to="/register" className="btn btn-primary">
-                        Crear cuenta
+                    <Link
+                        to="/register"
+                        className="register-banner-button"
+                    >
+                        Crear una cuenta →
                     </Link>
-                </section>
-            </main>
-        </>
+
+                </div>
+
+                <div className="register-banner-decoration">
+                    MS
+                </div>
+
+            </section>
+
+        </div>
     );
 }
 

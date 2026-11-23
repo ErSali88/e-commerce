@@ -1,7 +1,7 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { apiRequest } from '../services/api';
+import './Auth.css';                                    // CAMBIO
 
 function Login() {
     const navigate = useNavigate();
@@ -42,68 +42,71 @@ function Login() {
     };
 
     return (
-        <main className="container mt-5 mb-5">
-            <div className="row justify-content-center">
-                <div className="col-md-6 col-lg-5">
-                    <div className="card shadow p-4">
-                        <h2 className="text-center mb-4">
-                            Iniciar sesión
-                        </h2>
+        <main className="auth-page">
+            <div className="auth-card">
 
-                        <form onSubmit={handleLogin}>
-                            <div className="mb-3">
-                                <label className="form-label">
-                                    Correo electrónico
-                                </label>
+                <span className="auth-tag">MOBILESTORE · ACCESO</span>
 
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Introduce tu email"
-                                    required
-                                />
-                            </div>
+                <h1 className="auth-title">Iniciar sesión</h1>
 
-                            <div className="mb-3">
-                                <label className="form-label">
-                                    Contraseña
-                                </label>
+                <p className="auth-subtitle">
+                    Accede a tu cuenta para continuar.
+                </p>
 
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Introduce tu contraseña"
-                                    required
-                                />
-                            </div>
+                <form onSubmit={handleLogin}>
 
-                            {error && (
-                                <div className="alert alert-danger">
-                                    {error}
-                                </div>
-                            )}
+                    <div className="auth-field">
+                        <label className="auth-label">
+                            Correo electrónico
+                        </label>
 
-                            <button
-                                type="submit"
-                                className="btn btn-primary w-100"
-                                disabled={cargando}
-                            >
-                                {cargando ? 'Entrando...' : 'Iniciar sesión'}
-                            </button>
-                        </form>
-
-                        <p className="text-center mt-3 mb-0">
-                            ¿Todavía no tienes cuenta?{' '}
-                            <Link to="/register">
-                                Regístrate
-                            </Link>
-                        </p>
+                        <input
+                            type="email"
+                            className="auth-input"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Introduce tu email"
+                            required
+                        />
                     </div>
-                </div>
+
+                    <div className="auth-field">
+                        <label className="auth-label">
+                            Contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            className="auth-input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Introduce tu contraseña"
+                            required
+                        />
+                    </div>
+
+                    {error && (
+                        <div className="auth-alert auth-alert-error">
+                            {error}
+                        </div>
+                    )}
+
+                    <button
+                        type="submit"
+                        className="auth-button"
+                        disabled={cargando}
+                    >
+                        {cargando ? 'Entrando...' : 'Iniciar sesión'}
+                    </button>
+                </form>
+
+                <p className="auth-footer">
+                    ¿Todavía no tienes cuenta?{' '}
+                    <Link to="/register">
+                        Regístrate
+                    </Link>
+                </p>
+
             </div>
         </main>
     );
